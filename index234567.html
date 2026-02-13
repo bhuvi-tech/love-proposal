@@ -1,157 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For My Love ❤️</title>
-
-<style>
-body {
-    margin: 0;
-    height: 100vh;
-    overflow: hidden;
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(135deg, #ff4e75, #ff9a9e);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: white;
-}
-
-/* Floating hearts */
-.heart {
-    position: absolute;
-    font-size: 20px;
-    animation: float 6s linear infinite;
-    opacity: 0.7;
-}
-
-@keyframes float {
-    0% {transform: translateY(100vh) scale(0);}
-    100% {transform: translateY(-10vh) scale(1.5);}
-}
-
-.container {
-    background: rgba(255,255,255,0.1);
-    backdrop-filter: blur(10px);
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 0 40px rgba(0,0,0,0.2);
-    animation: fadeIn 2s ease;
-}
-
-@keyframes fadeIn {
-    from {opacity: 0; transform: scale(0.8);}
-    to {opacity: 1; transform: scale(1);}
-}
-
-h1 {
-    font-size: 36px;
-    margin-bottom: 10px;
-}
-
-p {
-    font-size: 20px;
-    margin-bottom: 30px;
-}
-
-.buttons {
-    position: relative;
-    height: 100px;
-}
-
-button {
-    padding: 15px 35px;
-    font-size: 18px;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    position: absolute;
-    transition: all 0.3s ease;
-}
-
-#yesBtn {
-    background: white;
-    color: #ff4e75;
-    left: 20%;
-}
-
-#noBtn {
-    background: #ff2e63;
-    color: white;
-    right: 20%;
-}
-
-/* Success screen */
-.success {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, #ff4e75, #ff9a9e);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    animation: fadeIn 1s ease;
-}
-</style>
-</head>
-
-<body>
-
-<div class="container" id="mainBox">
-    <h1>Hey My Love ❤️</h1>
-    <p>
-        You make my world brighter, my heart happier,  
-        and my life more beautiful every day.
-    </p>
-    <h2>Will you be my Valentine?</h2>
-
-    <div class="buttons">
-        <button id="yesBtn" onclick="sayYes()">Yes ❤️</button>
-        <button id="noBtn">No</button>
-    </div>
-</div>
-
 <script>
 const noBtn = document.getElementById("noBtn");
 
-// Make NO button run away
-noBtn.addEventListener("mouseover", moveButton);
-noBtn.addEventListener("click", moveButton);
-
+// Move button but keep it inside screen
 function moveButton() {
-    const x = Math.random() * (window.innerWidth - 100);
-    const y = Math.random() * (window.innerHeight - 50);
+    const buttonWidth = noBtn.offsetWidth;
+    const buttonHeight = noBtn.offsetHeight;
+
+    const maxX = window.innerWidth - buttonWidth - 20;
+    const maxY = window.innerHeight - buttonHeight - 20;
+
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+
+    noBtn.style.position = "fixed";
     noBtn.style.left = x + "px";
     noBtn.style.top = y + "px";
 }
 
+// Run away on hover or touch
+noBtn.addEventListener("mouseover", moveButton);
+noBtn.addEventListener("touchstart", moveButton);
+
 // YES clicked
 function sayYes() {
     document.body.innerHTML = `
-    <div class="success">
+    <div style="
+        height:100vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        flex-direction:column;
+        background: linear-gradient(135deg, #ff4e75, #ff9a9e);
+        color:white;
+        text-align:center;
+        font-family:Segoe UI;
+    ">
         <h1>Yaaay! ❤️</h1>
-        <h2>You just made me the happiest person alive!</h2>
+        <h2>You made me the happiest person alive!</h2>
         <p>I love you forever 💕</p>
     </div>
     `;
 }
-
-// Floating hearts generator
-setInterval(() => {
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.innerHTML = "❤️";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
-    document.body.appendChild(heart);
-
-    setTimeout(() => heart.remove(), 6000);
-}, 300);
 </script>
-
-</body>
-</html>
