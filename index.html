@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>A Surprise For You ❤️</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            color: white;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 32px;
+        }
+
+        p {
+            font-size: 18px;
+            margin: 20px 0;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 30px;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        .yes {
+            background-color: #ffffff;
+            color: #ff4d6d;
+        }
+
+        .no {
+            background-color: #ff4d6d;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hey My Love ❤️</h1>
+        <p>
+            From the day you came into my life, everything became beautiful.  
+            Your smile is my happiness, your love is my strength.  
+            I want to spend every moment of my life with you.
+        </p>
+        <h2>Will you be my forever?</h2>
+
+        <button class="yes" onclick="yesClicked()">Yes ❤️</button>
+        <button class="no" onclick="noClicked()">No</button>
+    </div>
+
+    <script>
+        function yesClicked() {
+            document.body.innerHTML = `
+                <div style="text-align:center; margin-top:20%;">
+                    <h1 style="color:white;">You made me the happiest person alive! ❤️</h1>
+                    <p style="color:white; font-size:20px;">I love you forever!</p>
+                </div>
+            `;
+        }
+
+        function noClicked() {
+            alert("Nice try! There's only one correct answer 😄");
+        }
+    </script>
+</body>
+</html>
