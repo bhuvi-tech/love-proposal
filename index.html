@@ -1,44 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Love ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ff4e75, #ff9a9e);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.container {
+    background: rgba(255,255,255,0.1);
+    padding: 30px;
+    border-radius: 20px;
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+#yesBtn {
+    background: white;
+    color: #ff4e75;
+}
+
+#noBtn {
+    background: #ff2e63;
+    color: white;
+    position: fixed;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Hey My Love ❤️</h1>
+    <h2>Will you be my Valentine?</h2>
+
+    <button id="yesBtn" onclick="sayYes()">Yes ❤️</button>
+    <button id="noBtn">No</button>
+</div>
+
 <script>
 const noBtn = document.getElementById("noBtn");
 
-// Move button but keep it inside screen
 function moveButton() {
-    const buttonWidth = noBtn.offsetWidth;
-    const buttonHeight = noBtn.offsetHeight;
+    const padding = 10;
 
-    const maxX = window.innerWidth - buttonWidth - 20;
-    const maxY = window.innerHeight - buttonHeight - 20;
+    const btnWidth = noBtn.offsetWidth;
+    const btnHeight = noBtn.offsetHeight;
+
+    const maxX = window.innerWidth - btnWidth - padding;
+    const maxY = window.innerHeight - btnHeight - padding;
 
     const x = Math.random() * maxX;
     const y = Math.random() * maxY;
 
-    noBtn.style.position = "fixed";
     noBtn.style.left = x + "px";
     noBtn.style.top = y + "px";
 }
 
-// Run away on hover or touch
 noBtn.addEventListener("mouseover", moveButton);
 noBtn.addEventListener("touchstart", moveButton);
 
-// YES clicked
 function sayYes() {
     document.body.innerHTML = `
-    <div style="
-        height:100vh;
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        flex-direction:column;
-        background: linear-gradient(135deg, #ff4e75, #ff9a9e);
-        color:white;
-        text-align:center;
-        font-family:Segoe UI;
-    ">
-        <h1>Yaaay! ❤️</h1>
-        <h2>You made me the happiest person alive!</h2>
-        <p>I love you forever 💕</p>
-    </div>
+        <div style="
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            flex-direction:column;
+            background: linear-gradient(135deg, #ff4e75, #ff9a9e);
+            color:white;
+        ">
+            <h1>She said YES! ❤️</h1>
+            <h2>You made me the happiest person alive!</h2>
+        </div>
     `;
 }
 </script>
+
+</body>
+</html>
