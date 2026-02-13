@@ -1,33 +1,23 @@
 <script>
 const noBtn = document.getElementById("noBtn");
 
-// Ensure page doesn't scroll
-document.body.style.overflow = "hidden";
-
+// Move button but keep it inside screen
 function moveButton() {
-    const padding = 10;
-
     const buttonWidth = noBtn.offsetWidth;
     const buttonHeight = noBtn.offsetHeight;
 
-    const viewportWidth = document.documentElement.clientWidth;
-    const viewportHeight = document.documentElement.clientHeight;
+    const maxX = window.innerWidth - buttonWidth - 20;
+    const maxY = window.innerHeight - buttonHeight - 20;
 
-    const maxX = viewportWidth - buttonWidth - padding;
-    const maxY = viewportHeight - buttonHeight - padding;
-
-    const minX = padding;
-    const minY = padding;
-
-    const x = Math.random() * (maxX - minX) + minX;
-    const y = Math.random() * (maxY - minY) + minY;
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
 
     noBtn.style.position = "fixed";
     noBtn.style.left = x + "px";
     noBtn.style.top = y + "px";
 }
 
-// Run away on hover (desktop) and touch (mobile)
+// Run away on hover or touch
 noBtn.addEventListener("mouseover", moveButton);
 noBtn.addEventListener("touchstart", moveButton);
 
@@ -45,7 +35,7 @@ function sayYes() {
         text-align:center;
         font-family:Segoe UI;
     ">
-        <h1>She said YES! ❤️</h1>
+        <h1>Yaaay! ❤️</h1>
         <h2>You made me the happiest person alive!</h2>
         <p>I love you forever 💕</p>
     </div>
